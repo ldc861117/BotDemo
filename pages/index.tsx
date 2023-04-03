@@ -230,6 +230,8 @@ const Home: React.FC<HomeProps> = ({
   // FETCH MODELS ----------------------------------------------
 
   const fetchModels = async (key: string) => {
+    
+    //when apikey is wrong or openAI is not responding
     const error = {
       title: t('Error fetching models.'),
       code: null,
@@ -241,10 +243,20 @@ const Home: React.FC<HomeProps> = ({
       ],
     } as ErrorMessage;
 
+    //when token is not set
+    const token = localStorage.getItem('sessionToken');
+    if (!token) {
+      //redirect to login page
+      window.location.href = '/login';
+      return;
+    }
+
+
     const response = await fetch('/api/models', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, // add auth to response headers
       },
       body: JSON.stringify({
         key,
