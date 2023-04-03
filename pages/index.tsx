@@ -4,7 +4,7 @@ import { Navbar } from '@/components/Mobile/Navbar';
 import { Promptbar } from '@/components/Promptbar/Promptbar';
 //this is for page loading, Defining a MainPage for index.tsx and LoginPage for LoginPage.tsx for later loading in ReactDom.render
 import LoginPage from '@/components/Auth/LoginPage';
-import MainPage from '@/pages/index';
+/* import MainPage from '@/pages/index'; */
 import { ChatBody, Conversation, Message } from '@/types/chat';
 import { KeyValuePair } from '@/types/data';
 import { ErrorMessage } from '@/types/error';
@@ -80,7 +80,7 @@ const Home: React.FC<HomeProps> = ({
   const [showPromptbar, setShowPromptbar] = useState<boolean>(true);
 
   // wrap application in the router component and define login route:
-ReactDOM.render(
+/* ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
@@ -93,7 +93,7 @@ ReactDOM.render(
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
-);
+); */
 
   // REFS ----------------------------------------------
 
