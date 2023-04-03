@@ -2,7 +2,7 @@ import { Chat } from '@/components/Chat/Chat';
 import { Chatbar } from '@/components/Chatbar/Chatbar';
 import { Navbar } from '@/components/Mobile/Navbar';
 import { Promptbar } from '@/components/Promptbar/Promptbar';
-//this is for page loading, making a mainpage for index.tsx and loginpage for LoginPage.tsx for later loading in ReactDom.render
+//this is for page loading, Defining a MainPage for index.tsx and LoginPage for LoginPage.tsx for later loading in ReactDom.render
 import LoginPage from '@/components/Auth/LoginPage';
 import MainPage from '@/pages/index';
 import { ChatBody, Conversation, Message } from '@/types/chat';
