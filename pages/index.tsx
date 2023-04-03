@@ -2,6 +2,9 @@ import { Chat } from '@/components/Chat/Chat';
 import { Chatbar } from '@/components/Chatbar/Chatbar';
 import { Navbar } from '@/components/Mobile/Navbar';
 import { Promptbar } from '@/components/Promptbar/Promptbar';
+//this is for page loading, making a mainpage for index.tsx and loginpage for LoginPage.tsx for later loading in ReactDom.render
+import LoginPage from '@/components/Auth/LoginPage';
+import MainPage from '@/pages/index';
 import { ChatBody, Conversation, Message } from '@/types/chat';
 import { KeyValuePair } from '@/types/data';
 import { ErrorMessage } from '@/types/error';
@@ -35,9 +38,12 @@ import Head from 'next/head';
 import { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 //v0.1 target: remove apikey requirement, replace it with login and register components
-
 
 interface HomeProps {
   serverSideApiKeyIsSet: boolean;
@@ -72,6 +78,22 @@ const Home: React.FC<HomeProps> = ({
 
   const [prompts, setPrompts] = useState<Prompt[]>([]);
   const [showPromptbar, setShowPromptbar] = useState<boolean>(true);
+
+  // wrap application in the router component and define login route:
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={<MainPage serverSideApiKeyIsSet={serverSideApiKeyIsSet} defaultModelId={defaultModelId} />}
+        />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
   // REFS ----------------------------------------------
 
