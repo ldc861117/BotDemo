@@ -2,10 +2,12 @@
   "name": "ai-chatbot-starter",
   "version": "0.1.0",
   "private": true,
+  "main": "electron.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "electron-start": "electron .",
     "lint": "next lint",
     "format": "prettier --write .",
     "test": "vitest",
